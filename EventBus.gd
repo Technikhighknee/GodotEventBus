@@ -20,7 +20,7 @@ extends Node
 # key "*" is reserved for global 'on_any' listeners
 
 var _listeners: Dictionary = {}
-var debug_enabled: bool = false;
+var _debug_enabled: bool = false;
 
 # =====================
 # === Public API ======
@@ -62,7 +62,7 @@ func emit(event_name: String, payload: Variant = null, meta := {}) -> void:
     "meta": meta
   }
   
-  if debug_enabled:
+  if _debug_enabled:
       event["debug_info"] = _get_debug_location()
 
   if _listeners.has("*"):
@@ -91,7 +91,7 @@ func clear_all() -> void:
 
 
 func enable_debug(enabled := true) -> void:
-  debug_enabled = enabled
+  _debug_enabled = enabled
 
 
 # =====================
