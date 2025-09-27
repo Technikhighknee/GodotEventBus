@@ -125,7 +125,7 @@ func _is_valid_callable(c: Callable) -> bool:
   return c.is_valid()
 
 
-func _ensure(key, default):
+func _ensure(key: String, default: Dictionary) -> Dictionary:
   if not _listeners.has(key):
     _listeners[key] = default
   return _listeners[key]
